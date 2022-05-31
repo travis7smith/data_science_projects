@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>project4.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="project-4-classifying-homes">Project 4: Classifying Homes</h1>
+<h2 id="data-science-programming-cse-250">Data Science Programming CSE 250</h2>
+<h3 id="travis-smith">Travis Smith</h3>
+<hr>
+<h1 id="project-summary">Project Summary</h1>
+<p>This project is to explore machine learning and to be able to create a model to make predictions. In this project we are using homes in Denver that have many features such as how many levels the home has or the living area. The goal is to accurately predict if the home was built before 1980 or not.</p>
+<h1 id="technical-details">Technical Details</h1>
+<h2 id="grand-question-1">Grand Question 1:</h2>
+<p>Create 2-3 charts that evaluate potential relationships between the house variables and the variable before1980 Explain what you learn from the charts that could help a machine learning algorithm.</p>
+<p><img src="stories_yrbuilt.png" alt="stories"></p>
+<p>This chart shows that the number of stories was lowest around 1960, but then started to increase but after 1980 it increaced more then before.</p>
+<p><img src="livearea_yrbuilt.png" alt="livearea"></p>
+<p>This chart shows that after 1980 the living area started to increase. This makes it easier to guess what year the home was built looking at the increase after 1980.</p>
+<p><img src="one_story_yrbuilt.png" alt="one story"></p>
+<p>The amount of one level homes greatly went down around 1960 then it leveled out around 1980. After 1980 the amount of one level homes leveled out.</p>
+<hr>
+<h2 id="grand-question-2">Grand Question 2:</h2>
+<p>Build a classification model labeling houses as being built “before 1980” or “during or after 1980”. Your goal is to reach 90% accuracy. Explain your final model choice (algorithm, tuning parameters, etc) and describe what other models you tried.</p>
+<p>I got an accuracy of 92.34%
+What I did for my learning model was I used a random forest classifier, I used 20% for testing leaving 80% for training, I only dropped the parcel ID ('parcel'), the year it was built ('yrbuilt'), and obviously the data that I am testing for ('before1980'). I found that using all the provided features were helpful and it seemed that a lot of it did influence in the decision.</p>
+<hr>
+<h2 id="grand-question-3">Grand Question 3:</h2>
+<p>Justify your classification model by discussing the most important features selected by your model. This discussion should include a chart and a description of the features.</p>
+<p><img src="importance.png" alt="importance"></p>
+<p>In this chart we can see that the top 5 most important features are (in order of importance): stories, livearea, arcstyle_ONE-STORY, gartype_Att, and numbaths. These help the learning model determine the year of the home more than all the other features.</p>
+<hr>
+<h2 id="grand-question-4">Grand Question 4:</h2>
+<p>Describe the quality of your classification model using 2-3 different evaluation metrics. You also need to explain how to interpret each of the evaluation metrics you use.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>precision</th>
+<th>recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.90</td>
+<td>0.89</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.93</td>
+<td>0.94</td>
+</tr>
+</tbody>
+</table>
+<p>Accuracy = 92.34%</p>
+<p>In this project we are trying to find homes with asbestos which is hazardous. So it is important to get it right. I may be accurate but I could be getting the true positives wrong and leaving homes with asbestos. So it is important to have a model that has a similar accuarcy, precision and recall.</p>
+<hr>
+<h2 id="appendix-a">Appendix A</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> altair <span class="hljs-keyword">as</span> alt
+<span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-comment"># import dataframes</span>
+homes = pd.read_csv(<span class="hljs-string">'dwellings_ml.csv'</span>)
+denver = pd.read_csv(<span class="hljs-string">'dwellings_denver.csv'</span>)
+<span class="hljs-comment"># neighborhoods = pd.read_csv('dwellings_neighborhoods_ml.csv')</span>
+
+<span class="hljs-comment"># Make charts possible and show data</span>
+alt.data_transformers.enable(<span class="hljs-string">'data_server'</span>)
+homes.head(<span class="hljs-number">3</span>)
+
+<span class="hljs-comment"># Grand question 1</span>
+<span class="hljs-comment"># Group all homes by the year and average all the columns</span>
+q1 = homes.groupby([<span class="hljs-string">'yrbuilt'</span>]).mean()
+
+<span class="hljs-comment"># Make chart to show corilation with yrbuilt and stories</span>
+sns.scatterplot(data=q1, x=<span class="hljs-string">'yrbuilt'</span>, y=<span class="hljs-string">'stories'</span>)
+plt.axvline(<span class="hljs-number">1980</span>,<span class="hljs-number">0</span>, color=<span class="hljs-string">'red'</span>)
+
+<span class="hljs-comment"># Make chart to show corilation with yrbuilt and livearea</span>
+sns.scatterplot(data=q1, x=<span class="hljs-string">'yrbuilt'</span>, y=<span class="hljs-string">'livearea'</span>)
+plt.axvline(<span class="hljs-number">1980</span>,<span class="hljs-number">0</span>, color=<span class="hljs-string">'red'</span>)
+
+<span class="hljs-comment"># Make chart to show corilation with yrbuilt and one story homes</span>
+sns.scatterplot(data=q1, x=<span class="hljs-string">'yrbuilt'</span>, y=<span class="hljs-string">'arcstyle_ONE-STORY'</span>)
+plt.axvline(<span class="hljs-number">1980</span>,<span class="hljs-number">0</span>, color=<span class="hljs-string">'red'</span>)
+
+<span class="hljs-comment"># Grand question 2</span>
+x = homes.drop(columns=[<span class="hljs-string">'before1980'</span>,<span class="hljs-string">'parcel'</span>, <span class="hljs-string">'yrbuilt'</span>])
+y = homes.filter([<span class="hljs-string">'before1980'</span>])
+
+<span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>)
+
+<span class="hljs-keyword">from</span> sklearn <span class="hljs-keyword">import</span> metrics
+<span class="hljs-keyword">from</span> sklearn.ensemble <span class="hljs-keyword">import</span> RandomForestClassifier
+
+<span class="hljs-comment"># create the model</span>
+classifier = RandomForestClassifier(n_estimators=<span class="hljs-number">25</span>, max_depth=<span class="hljs-number">15</span>, random_state=<span class="hljs-number">10</span>)
+
+<span class="hljs-comment"># train the model</span>
+classifier.fit(x_train, y_train)
+
+<span class="hljs-comment"># make predictions</span>
+y_predictions = classifier.predict(x_test)
+
+<span class="hljs-comment"># test how accurate predictions are</span>
+print(<span class="hljs-string">'Accuracy score:'</span>, (metrics.accuracy_score(y_test, y_predictions)*<span class="hljs-number">100</span>).round(<span class="hljs-number">2</span>), <span class="hljs-string">'%'</span>)
+
+<span class="hljs-comment"># Grand question 3</span>
+<span class="hljs-comment"># Importance features ranked by bar chart</span>
+
+feature_df = pd.DataFrame({<span class="hljs-string">'feature'</span>:x.columns, <span class="hljs-string">'importance'</span>:classifier.feature_importances_})
+<span class="hljs-comment"># feature_df.sort_values(by='importance',ascending=False).head(8)</span>
+
+<span class="hljs-keyword">import</span> altair <span class="hljs-keyword">as</span> alt
+
+(alt.Chart(feature_df)
+    .mark_bar()
+    .encode(
+        x = <span class="hljs-string">'importance'</span>,
+        y = alt.Y(<span class="hljs-string">'feature'</span>, sort=<span class="hljs-string">'x'</span>)
+    ))
+
+<span class="hljs-comment"># Grand question 4</span>
+<span class="hljs-comment"># Accuracy, recall, precision</span>
+
+print(metrics.classification_report(y_test, y_predictions))
+</div></code></pre>
+
+</body>
+</html>
