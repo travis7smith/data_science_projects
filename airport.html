@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>project_2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="project-2-late-flights-and-missing-data">Project 2: Late Flights and Missing Data</h1>
+<h2 id="data-science-programming-cse-250">Data Science Programming CSE 250</h2>
+<h3 id="travis-smith">Travis Smith</h3>
+<hr>
+<h2 id="project-summary">Project Summary</h2>
+<p>We are exploring a json file to look at flights in corelation to delays. We are looking at different types of delays and their duration. We can also see which airports are performing the best. The goal of this project is to understand all the methods to filter and get the data that we want to use.</p>
+<h2 id="technical-details">Technical Details</h2>
+<hr>
+<h2 id="grand-question-1">Grand Question 1:</h2>
+<p>Which airport has the worst delays? Discuss how you chose to define “worst”. Your answer should also include a table that lists (for each airport) the total number of flights, total number of delayed flights, proportion of delayed flights, and average delay time in hours.</p>
+<p>The airport with the most delays in total was Altanta (ALT); however, the airport with the most delays in proportion to the number of flights is San Fransico (SFO). So if you want a lower chance of a delayed flight I would avoid San Fransisco (SFO)</p>
+<p><img src="q1_image.png" alt="worst airport"></p>
+<hr>
+<h2 id="grand-question-2">Grand Question 2:</h2>
+<p>What is the best month to fly if you want to avoid delays of any length? Discuss your answer. Include one chart to help support your answer, with the x-axis ordered by month. (To answer this question, you will need to remove any rows that are missing the Month variable.)</p>
+<p>As you may have guessed, the worst months to travel in are December, June, and July. So the best month to travel in would be September and November to beat the crowds.</p>
+<p><img src="q2_image.png" alt="worst month"></p>
+<hr>
+<h2 id="grand-question-3">Grand Question 3:</h2>
+<p>According to the BTS website, the “Weather” category only accounts for severe weather delays. Mild weather delays are not counted in the “Weather” category, but are actually included in both the “NAS” and “Late-Arriving Aircraft” categories. Your job is to create a new column that calculates the total number of flights delayed by weather (both severe and mild). You will need to replace all the missing values in the Late Aircraft variable with the mean. Show your work by printing the first 5 rows of data in a table. Use these three rules for your calculations:</p>
+<pre><code>a. 100% of delayed flights in the Weather category are due to weather.  
+b. 30% of delayed flights in the Late-Arriving category are due to weather.  
+c. From April to August, 40% of delayed flights in the NAS category are due to weather. The rest of the months, the proportion rises to 65%.
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>month</th>
+<th>num_of_delays_weather</th>
+<th>num_of_delays_late_aircraft</th>
+<th>num_of_delays_nas</th>
+<th>num_of_delays_total</th>
+<th>all_weather_delays</th>
+<th>num_of_flights_total</th>
+<th>airport_code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>January</td>
+<td>448.0</td>
+<td>1018.0</td>
+<td>4598.0</td>
+<td>8355.0</td>
+<td>3742.0</td>
+<td>35048.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>January</td>
+<td>233.0</td>
+<td>928.0</td>
+<td>935.0</td>
+<td>3153.0</td>
+<td>1119.0</td>
+<td>12687.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>January</td>
+<td>61.0</td>
+<td>1058.0</td>
+<td>895.0</td>
+<td>2430.0</td>
+<td>960.0</td>
+<td>12381.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>January</td>
+<td>306.0</td>
+<td>2255.0</td>
+<td>5415.0</td>
+<td>9178.0</td>
+<td>4502.0</td>
+<td>28194.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>January</td>
+<td>56.0</td>
+<td>680.0</td>
+<td>638.0</td>
+<td>1952.0</td>
+<td>675.0</td>
+<td>7283.0</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="grand-quesiton-4">Grand Quesiton 4:</h2>
+<p>Using the new weather variable calculated above, create a barplot showing the proportion of all flights that are delayed by weather at each airport. Discuss what you learn from this graph.</p>
+<p><img src="q4_image.png" alt="weather delays by airport"></p>
+<p>So it seems like the San Fransisco Airport has the most delays due to weather.</p>
+<hr>
+<h2 id="grand-question-5">Grand Question 5:</h2>
+<p>Fix all of the varied missing data types in the data to be consistent (all missing values should be displayed as “NaN”). In your report include one record example (one row) from your new data, formatted as a JSON file. You example should have at least one missing value.</p>
+<p>Example from the first line of the JSON:
+Before fixing error codes: 1500+
+After fixing error codes:  NaN</p>
+<h2 id="appendix-a">Appendix A</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> altair <span class="hljs-keyword">as</span> alt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+flights = pd.read_json(<span class="hljs-string">'flights_missing.json'</span>)
+<span class="hljs-comment">#flight = pd.read_json('https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json')</span>
+flights.head(<span class="hljs-number">8</span>)
+<span class="hljs-comment">### Grand question 1:</span>
+
+q1 = (flights
+    .filter(items=[<span class="hljs-string">'airport_code'</span>, <span class="hljs-string">'num_of_delays_total'</span>, <span class="hljs-string">'num_of_flights_total'</span>])
+    .groupby(<span class="hljs-string">'airport_code'</span>)
+    .agg(<span class="hljs-string">'sum'</span>)
+    .assign(perc_delayed= <span class="hljs-keyword">lambda</span> x: x.num_of_delays_total / x.num_of_flights_total * <span class="hljs-number">100</span>).round(<span class="hljs-number">1</span>)
+    .sort_values(by=<span class="hljs-string">'perc_delayed'</span>, ascending=<span class="hljs-literal">False</span>)
+    .reset_index())
+
+<span class="hljs-comment"># print(q1.filter(items='num_of_delays_total').max())</span>
+print(q1)
+chart_q1 = (alt.Chart(q1, title=<span class="hljs-string">'Frequency of delayed flights by airport'</span>)
+    .mark_bar()
+    .encode(
+        x = alt.X(<span class="hljs-string">'airport_code'</span>, axis = alt.Axis(title = <span class="hljs-string">"Airport code"</span>), sort=alt.EncodingSortField(field=<span class="hljs-string">"Letters"</span>, op=<span class="hljs-string">"count"</span>, order=<span class="hljs-string">'ascending'</span>)),
+        y = alt.Y(<span class="hljs-string">'perc_delayed'</span>, axis = alt.Axis(title = <span class="hljs-string">"Percent of flights delayed (%)"</span>)),
+        color = <span class="hljs-string">'airport_code'</span>))
+
+chart_q1
+<span class="hljs-comment">### Grand question 2:</span>
+
+q2 = (flights
+    .filter(items=[<span class="hljs-string">'month'</span>, <span class="hljs-string">'num_of_delays_total'</span>, <span class="hljs-string">'num_of_flights_total'</span>])
+    .groupby(<span class="hljs-string">'month'</span>)
+    .agg(<span class="hljs-string">'sum'</span>)
+    .assign(perc_delayed= <span class="hljs-keyword">lambda</span> x: x.num_of_delays_total / x.num_of_flights_total * <span class="hljs-number">100</span>).round(<span class="hljs-number">1</span>)
+    .sort_values(by=<span class="hljs-string">'perc_delayed'</span>, ascending=<span class="hljs-literal">False</span>)
+    .reset_index())
+
+<span class="hljs-comment"># print(q1.filter(items='num_of_delays_total').max())</span>
+q2.head(<span class="hljs-number">12</span>)
+chart_q2 = (alt.Chart(q2, title=<span class="hljs-string">'Frequency of delayed flights by month'</span>)
+    .mark_bar()
+    .encode(
+        x = alt.X(<span class="hljs-string">'month'</span>, axis = alt.Axis(title = <span class="hljs-string">"Month"</span>), sort=[<span class="hljs-string">'January'</span>, <span class="hljs-string">'Febuary'</span>, <span class="hljs-string">'March'</span>, <span class="hljs-string">'April'</span>, <span class="hljs-string">'May'</span>, <span class="hljs-string">'June'</span>, <span class="hljs-string">'July'</span>, <span class="hljs-string">'August'</span>, <span class="hljs-string">'September'</span>, <span class="hljs-string">'October'</span>, <span class="hljs-string">'November'</span>, <span class="hljs-string">'December'</span>, <span class="hljs-string">'n/a'</span>]),
+        y = alt.Y(<span class="hljs-string">'perc_delayed'</span>, axis = alt.Axis(title = <span class="hljs-string">"Percent of flights delayed (%)"</span>)),
+        color = <span class="hljs-string">'month'</span>))
+
+chart_q2
+
+<span class="hljs-comment">### Grand question 3:</span>
+
+avg_late = flights.num_of_delays_late_aircraft.mean()
+
+flights.replace([<span class="hljs-number">-999</span>], avg_late, inplace=<span class="hljs-literal">True</span>)
+
+q3 = flights.assign(
+    weather1 = flights.num_of_delays_weather,
+    weather2 = flights.num_of_delays_late_aircraft * <span class="hljs-number">0.3</span>,
+    weather3 = np.where(flights.month.isin([<span class="hljs-string">'April'</span>, <span class="hljs-string">'June'</span>, <span class="hljs-string">'July'</span>, <span class="hljs-string">'August'</span>]), <span class="hljs-number">0.4</span> * flights.num_of_delays_nas, <span class="hljs-number">0.65</span> * flights.num_of_delays_nas),
+    all_weather_delays = <span class="hljs-keyword">lambda</span> x: x.weather1 + x.weather2 + x.weather3).round(<span class="hljs-number">0</span>)
+
+q3.filter(items=[<span class="hljs-string">'month'</span>, <span class="hljs-string">'num_of_delays_weather'</span>, <span class="hljs-string">'num_of_delays_late_aircraft'</span>, <span class="hljs-string">'num_of_delays_nas'</span>, <span class="hljs-string">'num_of_delays_total'</span>, <span class="hljs-string">'all_weather_delays'</span>, <span class="hljs-string">'num_of_flights_total'</span>, <span class="hljs-string">'airport_code'</span>]).head()
+<span class="hljs-comment">### Grand Question 4:</span>
+
+q4 = (q3
+    .filter(items=[<span class="hljs-string">'month'</span>, <span class="hljs-string">'num_of_delays_weather'</span>, <span class="hljs-string">'num_of_delays_late_aircraft'</span>, <span class="hljs-string">'num_of_delays_nas'</span>, <span class="hljs-string">'num_of_delays_total'</span>, <span class="hljs-string">'all_weather_delays'</span>, <span class="hljs-string">'num_of_flights_total'</span>, <span class="hljs-string">'perc_delayed'</span>, <span class="hljs-string">'airport_code'</span>])
+    .groupby(<span class="hljs-string">'airport_code'</span>)
+    .agg(<span class="hljs-string">'sum'</span>)
+    .assign(perc_delayed= <span class="hljs-keyword">lambda</span> x: x.all_weather_delays / x.num_of_flights_total * <span class="hljs-number">100</span>).round(<span class="hljs-number">1</span>)
+    .sort_values(by=<span class="hljs-string">'perc_delayed'</span>, ascending=<span class="hljs-literal">False</span>)
+    .reset_index())
+
+<span class="hljs-comment"># q4.filter(items=['airport_code', 'perc_delayed']).head()</span>
+
+chart_q4 = (alt.Chart(q4, title=<span class="hljs-string">'Delays due to weather'</span>)
+    .mark_bar()
+    .encode(
+        x = alt.X(<span class="hljs-string">'airport_code'</span>, axis = alt.Axis(title = <span class="hljs-string">"Airport"</span>)),
+        y = alt.Y(<span class="hljs-string">'perc_delayed'</span>, axis = alt.Axis(title = <span class="hljs-string">"Pecent of flights delayed due to weather (%)"</span>)),
+        color = <span class="hljs-string">'airport_code'</span>))
+
+chart_q4
+<span class="hljs-comment">### Grand Question 5:</span>
+
+print(<span class="hljs-string">'Before fixing error codes:'</span>, flights.loc[<span class="hljs-number">0</span>].num_of_delays_carrier)
+
+flights.replace(<span class="hljs-number">-999</span>, <span class="hljs-string">'NaN'</span>, inplace=<span class="hljs-literal">True</span>)
+flights.replace(<span class="hljs-string">'1500+'</span>, <span class="hljs-string">'NaN'</span>, inplace=<span class="hljs-literal">True</span>)
+flights.replace(<span class="hljs-string">''</span>, <span class="hljs-string">'NaN'</span>, inplace=<span class="hljs-literal">True</span>)
+flights.replace(<span class="hljs-string">'n/a'</span>, <span class="hljs-string">'NaN'</span>, inplace=<span class="hljs-literal">True</span>)
+
+print(<span class="hljs-string">'After fixing error codes: '</span>, flights.loc[<span class="hljs-number">0</span>].num_of_delays_carrier)
+</div></code></pre>
+
+</body>
+</html>
